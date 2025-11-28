@@ -103,7 +103,7 @@ class RepoForm : AppCompatActivity() {
         val repoDescription = binding.repoDescriptionInput.text.toString().trim()
         val repoRequest = RepoRequest(repoName, repoDescription)
 
-        RetrofitClient.gitHubApiService.addRepo(repoRequest) // <--- CORREGIDO
+        RetrofitClient.getApiService().addRepo(repoRequest) // <--- CORREGIDO
             .enqueue(object : Callback<Repo> {
                 override fun onResponse(call: Call<Repo>, response: Response<Repo>) {
                     if (response.isSuccessful) {
@@ -135,7 +135,7 @@ class RepoForm : AppCompatActivity() {
             description = newDescription
         )
 
-        RetrofitClient.gitHubApiService.updateRepo(
+        RetrofitClient.getApiService().updateRepo(
             owner = originalRepo.owner.login,
             repoName = originalRepo.name,
             repoRequest = repoRequest

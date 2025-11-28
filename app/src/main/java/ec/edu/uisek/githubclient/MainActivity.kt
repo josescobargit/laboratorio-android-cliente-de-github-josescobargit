@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var reposAdapter: ReposAdapter
-    private val apiService: GithubApiService = RetrofitClient.gitHubApiService
+    private val apiService: GithubApiService = RetrofitClient.getApiService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
