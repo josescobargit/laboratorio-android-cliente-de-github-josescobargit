@@ -29,6 +29,12 @@ class MainActivity : AppCompatActivity() {
         binding.newRepoFab.setOnClickListener {
             displayNewRepoForm()
         }
+
+        binding.logoutButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     override fun onResume() {
