@@ -31,9 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.logoutButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
+            showLogoutConfirmationDialog()
         }
     }
 
@@ -66,6 +64,19 @@ class MainActivity : AppCompatActivity() {
             .setMessage("¿Deseas eliminar '${repo.name}'?")
             .setPositiveButton("Eliminar") { _, _ ->
                 deleteRepository(repo)
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Cerrar sesión")
+            .setMessage("Se va a cerrar sesión")
+            .setPositiveButton("Confirmar") { _, _ ->
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
             }
             .setNegativeButton("Cancelar", null)
             .show()
